@@ -1,0 +1,23 @@
+.card-container{
+    background-color: white;
+    height: auto;
+    margin: 0; 
+    padding-bottom: 25px; 
+}
+
+.card-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+
+}
+
+.card-container > h2 {
+    text-align: center;
+    color: #000;
+    font-size: 40px;
+    margin: 0;
+    padding: 20px;
+}
