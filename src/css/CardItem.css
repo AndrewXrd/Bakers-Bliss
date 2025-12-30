@@ -1,29 +1,32 @@
-.card-item{
+.card-item {
     width: 400px;
     height: 400px;
     margin: 20px;
     overflow: hidden;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); 
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
     display: inline-block;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.1));
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.card-item-pic-wrap{
+.card-item-pic-wrap {
     margin: 0;
     padding: 0;
     margin-bottom: 5px;
     position: relative;
-    height: 300px;  /*Example: 250px for image, 200px for text area = 450px total card height */
+    height: 300px;
+    /*Example: 250px for image, 200px for text area = 450px total card height */
 }
 
-.card-item-img{
+.card-item-img {
     width: 100%;
     height: 100%;
-    object-fit:cover;
+    object-fit: cover;
     display: block;
     padding: 0;
 }
 
-.label{
+.label {
     position: absolute;
     left: px;
     bottom: 0px;
@@ -36,18 +39,21 @@
 }
 
 .card-item-info {
-    height: calc(100% - 250px); 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
+    height: calc(100% - 250px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding-bottom: 55px;
     box-sizing: border-box;
 }
 
-.card-item-info h5{
+.card-item-info h5 {
     color: black;
     font-size: 15px;
     text-align: center;
 }
 
-
+.card-item:hover {
+    transform: scale(1.1) translateY(-10px);
+    filter: drop-shadow(0 10px 15px gray);
+}
