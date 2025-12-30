@@ -3,19 +3,19 @@ import '../css/CardItem.css'
 import { Link } from "react-router-dom";
 
 function CardItem(props) {
-    return(
+    return (
         <>
-        <li className="card-item">
-            <Link className="card-item-link" href={props.path}>
-                <figure className="card-item-pic-wrap" data-category={props.label}>
-                    <img src={props.src} alt="Travel Image" className="card-item-img"/>
-                    <div className="label">{props.label}</div>
-                </figure>
-                <div className="card-item-info">
-                    <h5 className="card-item-text">{props.text}</h5>
-                </div>
-            </Link>
-        </li>
+            <li className="card-item">
+                <Link className="card-item-link" to={props.path}>
+                    <figure className="card-item-pic-wrap" data-category={props.label}>
+                        <img src={props.src} alt="Travel Image" className="card-item-img" />
+                        <div className="label">{props.label}</div>
+                    </figure>
+                    <div className="card-item-info">
+                        <h5 className="card-item-text">{props.text}</h5>
+                    </div>
+                </Link>
+            </li>
         </>
     )
 }
