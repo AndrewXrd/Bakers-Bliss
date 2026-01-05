@@ -1,5 +1,5 @@
 import React from "react";
-import '../css/TitlePage.css';
+import '../css/Titlepage.css';
 import bg from '../assets/bg2.jpg'
 
 function TitlePage() {
