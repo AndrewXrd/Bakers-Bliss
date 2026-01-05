@@ -1,50 +1,117 @@
-import React from "react";
+import React, { useState } from "react";
 import '../css/Cards.css'
 import CardItem from "../components/CardItem";
-import veniceImg from '../assets/venice.jpg';
-import amazonImg from '../assets/amazon.jpg';
-import tokyoImg from '../assets/tokyo.jpg';
-import icelandImg from '../assets/iceland.jpg';
-import lankaImg from '../assets/lanka.webp';
+import bread from '../assets/bread.jpg'
+import brownbread from '../assets/brown-bread.jpg'
+import chococookie from '../assets/cookie.webp'
+import buttercookie from '../assets/butter-cookies.jpg'
+import cake from '../assets/cake.jpg'
+import fruitcake from '../assets/fruit-cake.webp'
+import puff from '../assets/puffs.webp'
+import eggpuff from '../assets/egg-puffs.jpg'
+import coffee from '../assets/coffee.jpg'
+import tea from '../assets/milk-tea.jpg'
+
+const cardData = [
+    {
+        src: bread,
+        text: "Freshly baked white bread, soft and perfect for your daily sandwiches.",
+        label: "Bread",
+        path: "/services"
+    },
+    {
+        src: brownbread,
+        text: "Healthy and hearty whole wheat brown bread for a nutritious diet.",
+        label: "Bread",
+        path: "/services"
+    },
+    {
+        src: chococookie,
+        text: "Rich double chocolate chip cookies that melt in your mouth.",
+        label: "Cookie",
+        path: "/services"
+    },
+    {
+        src: buttercookie,
+        text: "Classic Danish butter cookies, crisp and delightful with tea.",
+        label: "Cookie",
+        path: "/services"
+    },
+    {
+        src: cake,
+        text: "Soft and fluffy vanilla sponge cake topped with creamy frosting.",
+        label: "Cake",
+        path: "/services"
+    },
+    {
+        src: fruitcake,
+        text: "Traditional fruit cake loaded with berries, nuts, and dry fruits.",
+        label: "Cake",
+        path: "/services"
+    },
+    {
+        src: puff,
+        text: "Crispy and flaky vegetable puffs with a spicy potato filling.",
+        label: "Puff",
+        path: "/services"
+    },
+    {
+        src: eggpuff,
+        text: "Savory egg puffs, the perfect companion for your evening coffee.",
+        label: "Puff",
+        path: "/services"
+    },
+    {
+        src: coffee,
+        text: "Strong and aromatic brewed coffee to kickstart your day.",
+        label: "Beverage",
+        path: "/services"
+    },
+    {
+        src: tea,
+        text: "Refreshing milk tea infused with cardamom and ginger.",
+        label: "Beverage",
+        path: "/services"
+    }
+];
 
 function Cards() {
+    const [activeCategory, setActiveCategory] = useState("All");
+
+    const categories = ["All", ...new Set(cardData.map(item => item.label))];
+
+    const filteredCards = activeCategory === "All"
+        ? cardData
+        : cardData.filter(item => item.label === activeCategory);
 
     return (
         <div className="card-container">
-            <h2>Check out these EPIC destinations!</h2>
+            <h2>Lets get Baking!</h2>
+
+            <div className="category-filter">
+                {categories.map((category, index) => (
+                    <button
+                        key={index}
+                        className={`filter-btn ${activeCategory === category ? 'active' : ''}`}
+                        onClick={() => setActiveCategory(category)}
+                    >
+                        {category}
+                    </button>
+                ))}
+            </div>
+
             <div className="card-component">
-                <div className="card-items">
-                    <CardItem
-                        src={veniceImg}
-                        text="Experience the ancient romance of gliding through Venice's labyrinthine canals on a traditional gondola."
-                        label="Romance"
-                        path="/services"
-                    />
-                    <CardItem
-                        src={amazonImg}
-                        text="Navigate the world's largest rainforest to witness exotic wildlife, conquer hidden trails, and discover the raw, unbridled energy of nature's greatest wilderness."
-                        label="Adventure"
-                        path="/services"
-                    />
-                    <CardItem
-                        src={tokyoImg}
-                        text="Dive into the electrifying Pulse of Tokyo, where neon-lit innovation and serene ancient tradition collide in one thrilling metropolis"
-                        label="Urban"
-                        path="/services"
-                    />
-                    <CardItem
-                        src={icelandImg}
-                        text="Explore Iceland's dramatic landscape, where fire meets ice and breathtaking natural wonders unfold around every spectacular turn"
-                        label="Scenery"
-                        path="/services"
-                    />
-                    <CardItem
-                        src={lankaImg}
-                        text="Sri Lanka offers an island of serendipity, where ancient ruins meet tropical beaches and vibrant culture thrives"
-                        label="Culture"
-                        path="/services"
-                    />
-                </div>
+                <ul className="card-items">
+                    {filteredCards.map((item, index) => (
+                        <CardItem
+                            key={index}
+                            src={item.src}
+                            text={item.text}
+                            label={item.label}
+                            path={item.path}
+                        />
+                    ))}
+                </ul>
             </div>
         </div>
     )

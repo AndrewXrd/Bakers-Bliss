@@ -1,38 +1,57 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import '../css/NavBar.css'
 import logo from '../assets/logo.png'
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react';
 
-function NavBar(){
+function NavBar() {
 
-  return (
+    const [scrolled, setScrolled] = useState(false);
 
-    <nav className='navBar'>
-        <div className='navBar-container'>
-            <Link to='/' className='navBar-logo-text'>
-                <img src={logo} className='logo' />   Trvl
-            </Link>
-            <div className='navBar-items-list' >
-                <ul>
-                    <li className='navBar-item'>
-                        <Link to='/' className='navBar-links'>Home</Link>
-                    </li>
-                    <li className='navBar-item'>
-                        <Link to='/' className='navBar-links'>Services</Link>
-                    </li>
-                    <li className='navBar-item'>
-                        <Link to='/' className='navBar-links'>About</Link>
-                    </li>
-                </ul>
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
 
-                <div className='navBar-signup-btn'>Sign Up</div>
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    return (
+
+        <nav className={`navBar ${scrolled ? 'scrolled' : ''}`}>
+            <div className='navBar-container'>
+                <Link to='/' className='navBar-logo-text'>
+                    <img src={logo} className='logo' />   Bakers Bliss
+                </Link>
+                <div className='navBar-items-list' >
+                    <ul>
+                        <li className='navBar-item'>
+                            <Link to='/' className='navBar-links'>Home</Link>
+                        </li>
+                        <li className='navBar-item'>
+                            <Link to='/' className='navBar-links'>Services</Link>
+                        </li>
+                        <li className='navBar-item'>
+                            <Link to='/' className='navBar-links'>About</Link>
+                        </li>
+                    </ul>
+
+                    <div className='navBar-signup-btn'>Sign Up</div>
+                </div>
+
             </div>
 
-        </div>
+        </nav>
 
-    </nav>
-
-  )
+    )
 }
 
 export default NavBar

@@ -1,59 +1,83 @@
+/* Main Card Container */
 .card-item {
-    width: 400px;
-    height: 400px;
-    margin: 20px;
-    overflow: hidden;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
-    display: inline-block;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.1));
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 300px;
+    /* Reduced size to fit 3 per line */
+    margin: 10px;
+    border-radius: 20px;
+    position: relative;
+    list-style: none;
+    transition: transform 0.3s ease;
 }
 
-.card-item-pic-wrap {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 5px;
+.card-item:hover {
+    transform: translateY(-5px);
+}
+
+.card-item-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
     position: relative;
-    height: 300px;
-    /*Example: 250px for image, 200px for text area = 450px total card height */
+}
+
+/* Container for the image and labels */
+.card-item-pic-wrap {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    /* Fixed height image container */
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 0;
 }
 
 .card-item-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     display: block;
-    padding: 0;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
+.card-item:hover .card-item-img {
+    transform: scale(1.1);
+}
+
+/* The "Bread" label (Top Right) */
 .label {
     position: absolute;
-    left: px;
-    bottom: 0px;
-    background-color: aqua;
-    color: black;
-    text-shadow: 0 0 10px white;
-    font-size: 12px;
-    padding: 5px 8px;
+    top: 15px;
+    right: 15px;
+    background-color: #efe0c1;
+    color: #5d4037;
+    padding: 6px 15px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
     z-index: 2;
 }
 
+/* The description box (Bottom Center) */
 .card-item-info {
-    height: calc(100% - 250px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 55px;
-    box-sizing: border-box;
-}
-
-.card-item-info h5 {
-    color: black;
-    font-size: 15px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    background-color: #664a13;
+    padding: 15px;
+    border-radius: 15px;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 2;
 }
 
-.card-item:hover {
-    transform: scale(1.1) translateY(-10px);
-    filter: drop-shadow(0 10px 15px gray);
+.card-item-text {
+    margin: 0;
+    color: #efe0c1;
+    /* Light beige for better contrast against dark brown */
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 500;
 }
