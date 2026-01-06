@@ -16,3 +16,11 @@
     width: 50%;
     font-family: "Dancing Script", cursive;
 }
+
+@media screen and (max-width: 768px) {
+    .slogan p {
+        font-size: 24px;
+        width: 90%;
+        padding: 30px 20px;
+    }
+}

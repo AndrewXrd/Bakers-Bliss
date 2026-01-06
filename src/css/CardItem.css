@@ -81,3 +81,16 @@
     line-height: 1.4;
     font-weight: 500;
 }
+
+@media screen and (max-width: 480px) {
+    .card-item {
+        width: 100%;
+        max-width: 320px;
+        /* Ensure checks on very small screens, but flexible below */
+        margin: 10px 0;
+    }
+
+    .card-item-pic-wrap {
+        height: 300px;
+    }
+}

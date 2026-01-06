@@ -6,46 +6,32 @@ import { useEffect } from 'react';
 
 function NavBar() {
 
-    const [scrolled, setScrolled] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
 
     return (
 
-        <nav className={`navBar ${scrolled ? 'scrolled' : ''}`}>
+        <nav className='navBar'>
             <div className='navBar-container'>
-                <Link to='/' className='navBar-logo-text'>
-                    <img src={logo} className='logo' />   Bakers Bliss
-                </Link>
-                <div className='navBar-items-list' >
-                    <ul>
-                        <li className='navBar-item'>
-                            <Link to='/' className='navBar-links'>Home</Link>
-                        </li>
-                        <li className='navBar-item'>
-                            <Link to='/' className='navBar-links'>Services</Link>
-                        </li>
-                        <li className='navBar-item'>
-                            <Link to='/' className='navBar-links'>About</Link>
-                        </li>
-                    </ul>
+                <ul className='nav-menu-left'>
+                    <li className='navBar-item'>
+                        <Link to='/' className='navBar-links'>Home</Link>
+                    </li>
+                    <li className='navBar-item'>
+                        <Link to='/' className='navBar-links'>Services</Link>
+                    </li>
+                </ul>
 
-                    <div className='navBar-signup-btn'>Sign Up</div>
-                </div>
+                <Link to='/' className='navBar-logo-centered'>
+                    <img src={logo} className='logo' alt="Bakers Bliss Logo" />
+                </Link>
+
+                <ul className='nav-menu-right'>
+                    <li className='navBar-item'>
+                        <Link to='/' className='navBar-links'>About</Link>
+                    </li>
+                    <li className='navBar-item'>
+                        <Link to='/' className='navBar-links'>Reviews</Link>
+                    </li>
+                </ul>
 
             </div>
 

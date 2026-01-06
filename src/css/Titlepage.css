@@ -79,3 +79,15 @@
     cursor: pointer;
     text-shadow: none;
 }
+
+@media screen and (max-width: 768px) {
+    .title-content h1 {
+        font-size: 40px;
+        width: 90%;
+    }
+
+    .title-content p {
+        font-size: 18px;
+        width: 90%;
+    }
+}
